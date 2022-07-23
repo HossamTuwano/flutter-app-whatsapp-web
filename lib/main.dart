@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import "package:flutter/material.dart";
 
 void main() {
@@ -8,8 +10,18 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
   final users = [
-    {'name': 'hossam', 'age': 90},
-    {'name': 'hussein', 'age': 89},
+    {'name': 'Ali Kiba', 'msg': "Yo"},
+    {'name': 'Darth Vader', 'msg': "im surround by dead people"},
+    {'name': 'Obi wan kenobi', 'msg': "you were my brother anakin"},
+    {'name': 'luke Skywalker', 'msg': "may the force be with you"},
+    {'name': 'yoda', 'msg': "do or do not never try"},
+    {'name': 'gandhi', 'msg': "karma is real"},
+    {'name': 'louise blecher', 'msg': "I'll see you in hell"},
+    {'name': 'Anorld Schwarzenegger', 'msg': "I'll be back"},
+    {'name': 'cooper', 'msg': "This Little Maneuver's Gonna Cost Us 51 Years"},
+    {'name': 'tony stark', 'msg': "i love you 3000"},
+    {'name': 'magu', 'msg': "hap kazi tu"},
+    {'name': 'samia', 'msg': "kazi iendelee"},
   ];
 
   @override
@@ -79,23 +91,72 @@ class MyApp extends StatelessWidget {
                                       )
                                     ],
                                   )),
+                              Container(
+                                  width: double.infinity,
+                                  color: const Color.fromRGBO(238, 238, 238, 1),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Container(
+                                        width: 400,
+                                        // padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border:
+                                                Border.all(color: Colors.grey)),
+                                        child: Row(
+                                          children: const [
+                                            Icon(Icons.search),
+                                            Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: SizedBox(
+                                                width: 350,
+                                                height: 20,
+                                                child: TextField(
+                                                  decoration: InputDecoration(
+                                                      fillColor: Colors.red,
+                                                      border: InputBorder.none,
+                                                      hintText:
+                                                          "Search or start a new chat"),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                  )),
                               Expanded(
                                 child: SizedBox(
                                   height: 200.0,
                                   child: ListView.builder(
                                       itemCount: users.length,
                                       itemBuilder: (context, index) {
+                                        var user = users[index]
+                                            .entries
+                                            .map((MapEntry user) => user.value)
+                                            .toList();
+
+                                        var hour = new DateTime.now().hour;
+                                        var min = new DateTime.now().minute;
+
                                         return Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 1, horizontal: 4),
-                                          child: ListTile(
-                                            title: Text(users[]),
-                                            leading: CircleAvatar(
-                                              backgroundImage: AssetImage(
-                                                  'assets/${users[index].avatar}'),
-                                            ),
-                                          ),
-                                        );
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 1, horizontal: 4),
+                                            child: ListTile(
+                                              title: Text(
+                                                user.first[0]
+                                                        .toString()
+                                                        .toUpperCase() +
+                                                    user.first.substring(1),
+                                                style: const TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              subtitle: Text(user.last),
+                                              leading: const CircleAvatar(
+                                                radius: 24,
+                                              ),
+                                              trailing: Text('$hour:$min'),
+                                            ));
                                       }),
                                 ),
                               )
@@ -103,7 +164,7 @@ class MyApp extends StatelessWidget {
                           )),
                     ),
                     Container(
-                      color: Colors.blue,
+                      color: const Color.fromRGBO(238, 238, 238, 1),
                       height: double.infinity,
                       width: 1000,
                     ),
