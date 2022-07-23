@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
                               Container(
                                   color: const Color.fromRGBO(238, 238, 238, 1),
                                   width: double.infinity,
-                                  padding: const EdgeInsets.all(20),
+                                  padding: const EdgeInsets.all(15),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -56,21 +58,19 @@ class MyApp extends StatelessWidget {
                                           "images/avatar_profile.png",
                                         ),
                                       ),
-                                      SizedBox(
-                                        child: Row(
-                                          children: const [
-                                            Icon(
-                                              Icons.message,
-                                              color: Color.fromRGBO(
-                                                  118, 118, 118, 1),
-                                            ),
-                                            Icon(
-                                              Icons.more_vert,
-                                              color: Color.fromRGBO(
-                                                  118, 118, 118, 1),
-                                            )
-                                          ],
-                                        ),
+                                      Row(
+                                        children: const [
+                                          Icon(
+                                            Icons.message,
+                                            color: Color.fromRGBO(
+                                                118, 118, 118, 1),
+                                          ),
+                                          Icon(
+                                            Icons.more_vert,
+                                            color: Color.fromRGBO(
+                                                118, 118, 118, 1),
+                                          )
+                                        ],
                                       )
                                     ],
                                   ))
