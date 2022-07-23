@@ -5,7 +5,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final users = [
+    {'name': 'hossam', 'age': 90},
+    {'name': 'hussein', 'age': 89},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +44,7 @@ class MyApp extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: Container(
-                          color: Colors.amber,
+                          color: Colors.white,
                           height: double.infinity,
                           width: 50,
                           child: Column(
@@ -73,7 +78,27 @@ class MyApp extends StatelessWidget {
                                         ],
                                       )
                                     ],
-                                  ))
+                                  )),
+                              Expanded(
+                                child: SizedBox(
+                                  height: 200.0,
+                                  child: ListView.builder(
+                                      itemCount: users.length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 1, horizontal: 4),
+                                          child: ListTile(
+                                            title: Text(users[]),
+                                            leading: CircleAvatar(
+                                              backgroundImage: AssetImage(
+                                                  'assets/${users[index].avatar}'),
+                                            ),
+                                          ),
+                                        );
+                                      }),
+                                ),
+                              )
                             ],
                           )),
                     ),
